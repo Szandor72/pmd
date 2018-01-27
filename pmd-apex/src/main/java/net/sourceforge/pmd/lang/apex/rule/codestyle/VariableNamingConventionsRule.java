@@ -150,6 +150,12 @@ public class VariableNamingConventionsRule extends AbstractApexRule {
             return data;
         }
 
+        if (varName.length()==2) {
+            addViolationWithMessage(data, node,
+                        "Variables names should be expressive, ''{0}'' seems too short to be expressive.",
+                        new Object[] { varName });
+        }
+
         // Static finals should be uppercase
         if (isStatic && isFinal) {
             if (!varName.equals(varName.toUpperCase())) {
